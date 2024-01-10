@@ -1,0 +1,5 @@
+---
+roles:
+  - name: GoogleCloudPlatform.google_cloud_ops_agents
+
+collections:
