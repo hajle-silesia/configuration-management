@@ -6,3 +6,9 @@
     - role: GoogleCloudPlatform.google_cloud_ops_agents
       vars:
         agent_type: ops-agent
+
+- name: Install Wireguard
+  hosts: servers
+  become: true
+  roles:
+    - role: githubixx.ansible_role_wireguard

@@ -1,5 +1,6 @@
 ---
 roles:
   - name: GoogleCloudPlatform.google_cloud_ops_agents
+  - name: githubixx.ansible_role_wireguard
 
 collections:
