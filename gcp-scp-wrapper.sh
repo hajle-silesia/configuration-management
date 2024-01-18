@@ -23,4 +23,3 @@ done
 CMD=`echo "${CMD}" | tr -d []`
 
 exec gcloud compute scp $OPTS "${HOST}" "${CMD}"
-
