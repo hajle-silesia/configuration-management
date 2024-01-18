@@ -1,0 +1,28 @@
+---
+- name: install Ops Agent
+  hosts: all
+  become: true
+  tags:
+    - ops-agent
+  roles:
+    - role: GoogleCloudPlatform.google_cloud_ops_agents
+      vars:
+        agent_type: ops-agent
+
+- name: install WireGuard
+  hosts: servers
+  become: true
+  tags:
+    - wireguard
+  roles:
+    - role: githubixx.ansible_role_wireguard
+
+- name: install Helm
+  hosts: servers
+  become: true
+  tags:
+    - helm
+  roles:
+    - role: geerlingguy.helm
+      vars:
+        helm_arch: arm64
