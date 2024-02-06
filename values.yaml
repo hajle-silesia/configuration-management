@@ -1,5 +1,5 @@
-external_lb_ip: dummy
-internal_lb_ip: dummy
-key_value_store_ip: dummy
-key_value_store_name: dummy
-key_value_store_user: dummy
+external_lb_ip: 34.160.96.247
+internal_lb_ip: 10.20.0.2
+key_value_store_ip: 10.206.0.5
+key_value_store_name: key-value-store
+key_value_store_user: admin
