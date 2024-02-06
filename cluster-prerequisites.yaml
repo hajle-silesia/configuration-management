@@ -1,0 +1,6 @@
+---
+- name: Prepare cluster prerequisites
+  hosts: all
+  become: true
+  roles:
+    - k3s.orchestration.prereq

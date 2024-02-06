@@ -1,3 +1,16 @@
 ---
 ansible_ssh_args: --tunnel-through-iap --zone={{ zone }} #--no-user-output-enabled --quiet
 ansible_scp_extra_args: --tunnel-through-iap --zone={{ zone }} #--quiet
+ansible_user: michaltomaszekawumba_gmail_com
+k3s_version: v1.28.4+k3s2
+token: "mytoken"  # Use ansible vault if you want to keep it secret
+api_endpoint: "10.20.0.15"
+extra_server_args: >
+  --kube-apiserver-arg \
+  --service-account-issuer="https://hajlesilesia.online" \
+  --kube-apiserver-arg \
+  --service-account-jwks-uri="https://hajlesilesia.online/openid/v1/jwks" \
+  --tls-san 10.20.0.2 \
+  --tls-san 34.160.96.247 \
+  --datastore-endpoint "postgres://admin:password@10.206.0.5:5432/key-value-store"
+extra_agent_args: ""

@@ -1,0 +1,12 @@
+---
+- name: Setup cluster servers
+  hosts: server
+  become: true
+  roles:
+    - role: k3s.orchestration.k3s_server
+
+- name: Setup cluster agents
+  hosts: agent
+  become: true
+  roles:
+    - role: k3s.orchestration.k3s_agent

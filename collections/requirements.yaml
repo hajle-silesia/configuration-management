@@ -3,5 +3,7 @@ roles:
   - name: GoogleCloudPlatform.google_cloud_ops_agents
   - name: githubixx.ansible_role_wireguard
   - name: geerlingguy.helm
-
 collections:
+  - name: https://github.com/k3s-io/k3s-ansible.git
+    type: git
+    version: master

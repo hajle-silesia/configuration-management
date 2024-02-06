@@ -1,0 +1,5 @@
+external_lb_ip:
+internal_lb_ip:
+key_value_store_ip:
+key_value_store_name:
+key_value_store_user:
