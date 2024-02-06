@@ -1,0 +1,5 @@
+external_lb_ip: dummy
+internal_lb_ip: dummy
+key_value_store_ip: dummy
+key_value_store_name: dummy
+key_value_store_user: dummy

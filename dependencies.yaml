@@ -1,5 +1,5 @@
 ---
-- name: install Ops Agent
+- name: Install Ops Agent
   hosts: all
   become: true
   tags:
@@ -9,16 +9,16 @@
       vars:
         agent_type: ops-agent
 
-- name: install WireGuard
-  hosts: servers
+- name: Install WireGuard
+  hosts: server
   become: true
   tags:
     - wireguard
   roles:
     - role: githubixx.ansible_role_wireguard
 
-- name: install Helm
-  hosts: servers
+- name: Install Helm
+  hosts: server
   become: true
   tags:
     - helm

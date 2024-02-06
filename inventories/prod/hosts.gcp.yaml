@@ -9,10 +9,12 @@ keyed_groups:
   - key: zone
     prefix: zone
   - key: (tags.items|list)
-    prefix: tag
+    prefix: tags
+  - key: labels.env
+    prefix: label_env
 groups:
-  servers: "'server' in name"
-  agents: "'agent' in name"
+  server: "'server' in name"
+  agent: "'agent' in name"
 compose:
   # set the ansible_host variable to connect with the private IP address without changing the hostname
   ansible_host: name
