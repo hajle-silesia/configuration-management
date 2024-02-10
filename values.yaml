@@ -1,4 +1,4 @@
-first_server_internal_ip: dummy
+first_server_internal_ip: 10.20.0.25
 external_lb_ip: 34.160.96.247
 internal_lb_ip: 10.20.0.2
 key_value_store_ip: 10.206.0.5
