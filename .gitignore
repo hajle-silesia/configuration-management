@@ -1,5 +1,5 @@
 *.py[cod]
 venv/
 .idea
-.env
+.env*
 .coverage

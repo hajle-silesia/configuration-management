@@ -1,16 +1,23 @@
 ---
+first_server_internal_ip: 10.20.0.27
+external_lb_ip: 34.160.96.247
+internal_lb_ip: 10.20.0.2
+key_value_store_ip: 10.206.0.5
+key_value_store_name: key-value-store
+key_value_store_user: admin
+
 ansible_ssh_args: --tunnel-through-iap --zone={{ zone }} #--no-user-output-enabled --quiet
 ansible_scp_extra_args: --tunnel-through-iap --zone={{ zone }} #--quiet
 ansible_user: michaltomaszekawumba_gmail_com
 k3s_version: v1.28.4+k3s2
 token: "mytoken"  # Use ansible vault if you want to keep it secret
-api_endpoint: "10.20.0.15"
+api_endpoint: "{{ first_server_internal_ip }}"
 extra_server_args: >
   --kube-apiserver-arg \
   --service-account-issuer="https://hajlesilesia.online" \
   --kube-apiserver-arg \
   --service-account-jwks-uri="https://hajlesilesia.online/openid/v1/jwks" \
-  --tls-san 10.20.0.2 \
-  --tls-san 34.160.96.247 \
-  --datastore-endpoint "postgres://admin:password@10.206.0.5:5432/key-value-store"
+  --tls-san {{ internal_lb_ip }} \
+  --tls-san {{ external_lb_ip }} \
+  --datastore-endpoint postgres://{{ key_value_store_user }}:{{ lookup('ansible.builtin.env', 'KEY_VALUE_STORE_PASSWORD') }}@{{ key_value_store_ip }}:5432/{{ key_value_store_name }}
 extra_agent_args: ""
