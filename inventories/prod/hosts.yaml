@@ -1,0 +1,5 @@
+---
+prod:
+  hosts:
+    server-01:
+      ansible_host: 150.230.148.219
