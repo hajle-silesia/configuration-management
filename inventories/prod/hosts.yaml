@@ -1,5 +1,13 @@
 ---
-prod:
+server:
   hosts:
-    server-01:
-      ansible_host: 150.230.148.219
+    instance-20240407-1821:
+      ansible_host: 130.61.35.96
+    instance-20240406-1901:
+      ansible_host: 130.61.107.62
+#agent:
+#  hosts:
+#    instance-20240407-1822:
+#      ansible_host: 130.61.202.207
+#    instance-20240407-1823:
+#      ansible_host: 130.61.184.38
