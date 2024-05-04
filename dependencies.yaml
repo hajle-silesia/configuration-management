@@ -1,14 +1,4 @@
 ---
-- name: Install Ops Agent
-  hosts: all
-  become: true
-  tags:
-    - ops-agent
-  roles:
-    - role: GoogleCloudPlatform.google_cloud_ops_agents
-      vars:
-        agent_type: ops-agent
-
 - name: Install WireGuard
   hosts: server
   become: true

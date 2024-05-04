@@ -1,0 +1,60 @@
+---
+- name: Install and configure Vault Server
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    server_hostname: vault.hajle-silesia.com
+    ssl_key_size: 4096
+    key_type: RSA
+    country_name: PL
+    email_address: mtweeman@gmail.com
+    organization_name: hajle-silesia
+    ansible_user: ubuntu
+
+  pre_tasks:
+    - name: Generate custom CA
+      include_tasks: tasks/generate_custom_ca.yml
+      args:
+        apply:
+          delegate_to: localhost
+          become: false
+    - name: Generate customCA-signed SSL certificates for minio
+      include_tasks: tasks/generate_ca_signed_cert.yml
+      args:
+        apply:
+          delegate_to: localhost
+          become: false
+
+    - name: Load tls key and cert
+      set_fact:
+        vault_key: "{{ lookup('file', 'certificates/' + server_hostname + '.key') }}"
+        vault_cert: "{{ lookup('file', 'certificates/' + server_hostname + '.pem') }}"
+        vault_ca: "{{ lookup('file', 'certificates/CA.peminstance-20240324-1919instance-20240324-1919') }}"
+
+  roles:
+    - role: ricsanfre.vault
+      vault_enable_tls: true
+      custom_ca: true
+      vault_cluster_address: 10.0.0.216:8201
+      vault_init: true
+      vault_unseal: true
+      vault_unseal_service: true
+      tls_skip_verify: true
+      display_init_response: true
+      # Configure KV
+      vault_kv_secrets:
+        path: secret
+
+      # Policies
+      policies:
+        - name: write
+          hcl: |
+            path "secret/*" {
+              capabilities = [ "create", "read", "update", "delete", "list", "patch" ]
+            }
+        - name: read
+          hcl: |
+            path "secret/*" {
+              capabilities = [ "read" ]
+            }      

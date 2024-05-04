@@ -1,0 +1,15 @@
+---
+- name: Install and configure Vault Server
+  hosts: all
+  any_errors_fatal: true
+  become: true
+  become_user: root
+  roles:
+    - role: brianshumate.vault
+      vault_backend: raft
+      vault_raft_cluster_members:
+        - peer: instance-20240403-2217
+          api_addr: http://10.0.0.129:8200
+        - peer: instance-20240403-2218
+          api_addr: http://10.0.0.93:8200
+      vault_raft_cloud_auto_join_scheme: http

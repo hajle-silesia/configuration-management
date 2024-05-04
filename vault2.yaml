@@ -1,0 +1,6 @@
+---
+- name: Install and configure Vault Server
+  hosts: all
+  become: true
+  roles:
+    - {role: ansible-community.ansible-vault, vault_backend: file}
