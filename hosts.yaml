@@ -1,6 +1,0 @@
-servers:
-  hosts:
-    inst-8vo3m-instancepool20240420192440:
-      ansible_host: 130.61.35.96
-    inst-bvcwp-instancepool20240420192440:
-      ansible_host: 130.61.107.62
