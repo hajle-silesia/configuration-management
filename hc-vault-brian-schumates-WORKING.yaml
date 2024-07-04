@@ -1,0 +1,12 @@
+---
+- name: Install and configure Vault Server
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: ansible-community.ansible-vault
+      vault_install_remotely: true
+      vault_raft_group_name: server
+      vault_architecture_map:
+        aarch64: arm64
+#      vault_api_addr: http://10.20.68.87:8200
