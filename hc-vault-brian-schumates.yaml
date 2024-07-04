@@ -5,10 +5,9 @@
   become_user: root
   roles:
     - role: ansible-community.ansible-vault
-      vault_install_remotely: true
-      vault_raft_group_name: server
       vault_architecture_map:
         aarch64: arm64
+      vault_install_remotely: true
       vault_tcp_listeners:
         - vault_address: 0.0.0.0
           vault_port: 8200
@@ -16,5 +15,6 @@
           vault_tls_disable: true
           vault_tls_disable_client_certs: true
       vault_api_addr: http://{{ in_host }}:8200
+      vault_raft_group_name: server
       vault_tls_disable: true
       vault_tls_disable_client_certs: true
