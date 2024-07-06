@@ -18,3 +18,7 @@
       vault_raft_group_name: server
       vault_tls_disable: true
       vault_tls_disable_client_certs: true
+#      vault_ocikms: true
+#      vault_ocikms_key_id: ocid1.key.oc1.eu-frankfurt-1.ens6g353aaebq.abtheljtsnokaxa4f7srxwogpvsxqj36h2ikzn4kjuwwcteaewcj4lcxpxlq
+#      vault_ocikms_crypto_endpoint: https://ens6g353aaebq-crypto.kms.eu-frankfurt-1.oraclecloud.com
+#      vault_ocikms_management_endpoint: https://ens6g353aaebq-management.kms.eu-frankfurt-1.oraclecloud.com
