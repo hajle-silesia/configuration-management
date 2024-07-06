@@ -1,4 +1,16 @@
 ---
+- name: Update and install packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Update packages
+      apt:
+        name: "*"
+        update_cache: yes
+    - name: Install packages
+      apt:
+        name:
+          - unzip
 - name: Install and configure Vault Server
   hosts: all
   become: true
