@@ -1,0 +1,39 @@
+---
+- name: Update and install packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Update packages
+      apt:
+        name: "*"
+        update_cache: yes
+    - name: Install packages
+      apt:
+        name:
+          - unzip
+- name: Install and configure Vault Server
+  hosts: all
+  become: true
+  become_user: root
+  roles:
+    - role: ansible-community.ansible-vault
+      vault_architecture_map:
+        aarch64: arm64
+      vault_install_remotely: true
+      vault_tcp_listeners:
+        - vault_address: 0.0.0.0
+          vault_port: 8200
+          vault_cluster_address: 0.0.0.0:8201
+          vault_tls_disable: true
+      vault_api_addr: http://{{ in_host }}:8200
+      vault_cluster_address: "{{ in_host }}:8201"
+      vault_cluster_addr: http://{{ in_host }}:8201
+      vault_raft_group_name: server
+      vault_raft_cluster_members:
+        - peer: lb
+          api_addr: http://10.20.68.87:8200
+      vault_ocikms: true
+      vault_log_level: debug
+      vault_ocikms_key_id: ocid1.key.oc1.eu-frankfurt-1.ens6g353aaebq.abtheljtsnokaxa4f7srxwogpvsxqj36h2ikzn4kjuwwcteaewcj4lcxpxlq
+      vault_ocikms_crypto_endpoint: https://ens6g353aaebq-crypto.kms.eu-frankfurt-1.oraclecloud.com
+      vault_ocikms_management_endpoint: https://ens6g353aaebq-management.kms.eu-frankfurt-1.oraclecloud.com
