@@ -1,8 +1,8 @@
 server:
   hosts:
-    inst-i9mdc-instancepool20240505140503:
-      ansible_host: 130.61.24.91
-    inst-bsbjm-instancepool20240505140503:
-      ansible_host: 130.61.114.10
-    inst-lhzim-instancepool20240505140503:
-      ansible_host: 130.61.53.75
+    inst-xnefz-instancepool20240612050658:
+      ansible_host: 130.61.222.9
+      in_host: 10.20.106.197
+    inst-asstx-instancepool20240612050658:
+      ansible_host: 130.61.131.225
+      in_host: 10.20.13.210

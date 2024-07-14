@@ -26,14 +26,21 @@
           - vault_address: 0.0.0.0
             vault_port: 8200
             vault_cluster_address: 0.0.0.0:8201
-            vault_tls_disable: true
-        vault_api_addr: http://{{ in_host }}:8200
-        vault_cluster_address: "http://{{ in_host }}:8201"
-        vault_cluster_addr: http://{{ in_host }}:8201
+            vault_tls_disable: false
+            vault_tls_certs_path: /etc/vault/tls
+            vault_tls_cert_file: server.crt
+            vault_tls_private_path: /etc/vault/tls
+            vault_tls_key_file: server.key
+            vault_tls_min_version: tls12
+            vault_tls_require_and_verify_client_cert: false
+            vault_tls_disable_client_certs: true
+        vault_api_addr: https://{{ in_host }}:8200
         vault_raft_group_name: server
         vault_raft_cluster_members:
           - peer: lb
-            api_addr: http://10.20.68.87:8200
+            leader_tls_servername: vault.picluster.ricsanfre.com
+            api_addr: https://10.20.68.87:8200
+        vault_raft_node_id: vault.picluster.ricsanfre.com
         vault_ocikms: true
         vault_ocikms_key_id: ocid1.key.oc1.eu-frankfurt-1.ens6g353aaebq.abtheljtsnokaxa4f7srxwogpvsxqj36h2ikzn4kjuwwcteaewcj4lcxpxlq
         vault_ocikms_crypto_endpoint: https://ens6g353aaebq-crypto.kms.eu-frankfurt-1.oraclecloud.com
