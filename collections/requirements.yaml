@@ -6,6 +6,7 @@ roles:
     name: ansible-community.ansible-vault
     scm: git
     version: master
+  - name: ricsanfre.vault
 collections:
   - name: https://github.com/k3s-io/k3s-ansible.git
     type: git

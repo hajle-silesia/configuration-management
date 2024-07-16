@@ -1,8 +1,8 @@
 server:
   hosts:
-    inst-xnefz-instancepool20240612050658:
-      ansible_host: 130.61.222.9
-      in_host: 10.20.106.197
-    inst-asstx-instancepool20240612050658:
-      ansible_host: 130.61.131.225
-      in_host: 10.20.13.210
+    inst-mhqnn-instancepool20240612050658:
+      ansible_host: 130.61.22.184
+      in_host: 10.20.84.40
+    inst-72r5l-instancepool20240612050658:
+      ansible_host: 130.61.34.116
+      in_host: 10.20.121.123

@@ -1,0 +1,5 @@
+server:
+  hosts:
+    inst-v7dzk-instancepool20240612050658:
+      ansible_host: 138.2.176.185
+      in_host: 10.20.49.167
