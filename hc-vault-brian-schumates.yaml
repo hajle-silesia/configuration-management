@@ -11,6 +11,48 @@
       apt:
         name:
           - unzip
+- name: Certificates
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure /etc/vault/tls directory exists
+      file:
+        path: /etc/vault/tls
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+    - name: Copy CA cert
+      copy:
+        src: ./certificates/ca.crt
+        dest: /etc/vault/tls
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy CA cert to shared dir
+      copy:
+        src: ./certificates/ca.crt
+        dest: /usr/local/share/ca-certificates
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy server cert
+      copy:
+        src: ./certificates/server.crt
+        dest: /etc/vault/tls
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy server key
+      copy:
+        src: ./certificates/server.key
+        dest: /etc/vault/tls
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Update CA certificates
+      shell:
+        cmd: update-ca-certificates
 - name: Install and configure Vault Server
   hosts: all
   become: true
@@ -39,9 +81,9 @@
         vault_raft_cluster_members:
           - peer: lb
             api_addr: https://10.20.68.87:8200
-        leader_ca_cert_file: /etc/vault/tls/ca.crt
-        leader_client_cert_file: /etc/vault/tls/server.crt
-        leader_client_key_file: /etc/vault/tls/server.key
+            leader_ca_cert_file : /etc/vault/tls/ca.crt
+            leader_client_cert_file: /etc/vault/tls/server.crt
+            leader_client_key_file: /etc/vault/tls/server.key
         vault_ocikms: true
         vault_ocikms_key_id: ocid1.key.oc1.eu-frankfurt-1.ens6g353aaebq.abtheljtsnokaxa4f7srxwogpvsxqj36h2ikzn4kjuwwcteaewcj4lcxpxlq
         vault_ocikms_crypto_endpoint: https://ens6g353aaebq-crypto.kms.eu-frankfurt-1.oraclecloud.com

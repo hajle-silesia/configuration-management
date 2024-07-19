@@ -1,8 +1,8 @@
 server:
   hosts:
-    inst-mhqnn-instancepool20240612050658:
-      ansible_host: 130.61.22.184
-      in_host: 10.20.84.40
-    inst-72r5l-instancepool20240612050658:
-      ansible_host: 130.61.34.116
-      in_host: 10.20.121.123
+    inst-wdtwj-instancepool20240612050658:
+      ansible_host: 130.61.105.68
+      in_host: 10.20.76.203
+    inst-weeax-instancepool20240612050658:
+      ansible_host: 130.61.149.127
+      in_host: 10.20.33.157
