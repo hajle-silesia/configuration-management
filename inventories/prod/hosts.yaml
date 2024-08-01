@@ -1,8 +1,11 @@
+---
 server:
+  vars:
+    ansible_ssh_common_args: -o StrictHostKeyChecking=accept-new
   hosts:
-    inst-wdtwj-instancepool20240612050658:
-      ansible_host: 130.61.105.68
-      in_host: 10.20.76.203
-    inst-weeax-instancepool20240612050658:
-      ansible_host: 130.61.149.127
-      in_host: 10.20.33.157
+    inst-9qqrl-instancepool20240719213914:
+      ansible_host: 130.61.28.235
+    inst-v1pst-instancepool20240719213914:
+      ansible_host: 130.61.40.111
+    inst-wfs4r-instancepool20240719213914:
+      ansible_host: 130.61.98.86

@@ -76,11 +76,12 @@
             vault_tls_min_version: tls12
             vault_tls_require_and_verify_client_cert: false
             vault_tls_disable_client_certs: true
-        vault_api_addr: https://{{ in_host }}:8200
+        vault_api_addr: https://{{ ansible_hostname }}.servers.default.oraclevcn.com:8200
+        vault_cluster_addr: http://{{ ansible_hostname }}.servers.default.oraclevcn.com:8201
         vault_raft_group_name: server
         vault_raft_cluster_members:
-          - peer: lb
-            api_addr: https://10.20.68.87:8200
+          - peer: internal-lb
+            api_addr: https://internal-lb.servers.default.oraclevcn.com:8200
             leader_ca_cert_file : /etc/vault/tls/ca.crt
             leader_client_cert_file: /etc/vault/tls/server.crt
             leader_client_key_file: /etc/vault/tls/server.key
